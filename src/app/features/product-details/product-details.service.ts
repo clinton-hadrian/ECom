@@ -5,17 +5,14 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class CatalogService {
+export class ProductDetailsService {
   constructor(private http: HttpClient) {}
 
   get baseUrl() {
     return environment.API_URL;
   }
 
-  getProducts() {
-    return this.http.get<any>(`${this.baseUrl}products`);
-  }
-  getCategories() {
-    return this.http.get<any>(`${this.baseUrl}products/categories`);
+  getProductById(productId: number) {
+    return this.http.get<any>(`${this.baseUrl}products/${productId}`);
   }
 }

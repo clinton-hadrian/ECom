@@ -8,22 +8,22 @@ class isTokenPresent {
   constructor(private router: Router) {}
 
   canActivate(path?: string): boolean {
-    // if (path == '') {
-    //   if (window.sessionStorage?.getItem('token')) {
-    //     return true;
-    //   } else {
-    //     this.router.navigate(['/home']);
-    //     return false;
-    //   }
-    // } else {
-    //   if (window.sessionStorage?.getItem('token')) {
-    //     return true;
-    //   } else {
-    //     this.router.navigate(['/']);
-    //     return false;
-    //   }
-    // }
-    return true;
+    if (path == '') {
+      if (!window.sessionStorage?.getItem('token')) {
+        return true;
+      } else {
+        this.router.navigate(['/home']);
+        return false;
+      }
+    } else {
+      if (window.sessionStorage?.getItem('token')) {
+        return true;
+      } else {
+        this.router.navigate(['/']);
+        return false;
+      }
+    }
+    // return true;
   }
 }
 

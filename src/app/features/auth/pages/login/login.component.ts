@@ -13,6 +13,7 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   signIn() {
+    sessionStorage.setItem('token', 'asdasd');
     this.router.navigate(['home']);
   }
 }

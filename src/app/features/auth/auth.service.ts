@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private router: Router) {}
 
-  constructor() { }
+  logout() {
+    sessionStorage.clear();
+    this.router.navigate(['/']);
+  }
 }

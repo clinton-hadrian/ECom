@@ -14,6 +14,13 @@
     </span>
   </div>
   <div class="p-toolbar-group-end">
-    <p-splitButton label="Save" icon="pi pi-check" [model]="items" />
+    <!-- <p-splitButton label="Save" icon="pi pi-check" [model]="items" /> -->
+    <p-dropdown
+      showClear="true"
+      [options]="categories"
+      [(ngModel)]="selectedCategory"
+      placeholder="Select a category"
+      (ngModelChange)="emitCategory()"
+    />
   </div>
 </p-toolbar>

@@ -1,2 +1,9 @@
 <p-toast [preventOpenDuplicates]="true" />
+<p-blockUI [blocked]="loaderService.isLoading()">
+  <p-progressSpinner
+    strokeWidth="8"
+    animationDuration=".5s"
+    ariaLabel="loading"
+  />
+</p-blockUI>
 <router-outlet></router-outlet>

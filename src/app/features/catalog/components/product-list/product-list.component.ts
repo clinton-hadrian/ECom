@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, input, OnInit } from '@angular/core';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { messageHelper } from '../../../../shared/helpers/message.helpers';
 import { CatalogService } from '../../catalog.service';
 import { PrimengModule } from '../../../../shared/modules/primeng/primeng.module';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { LoaderService } from '../../../../core/services/loader.service';
 
 @Component({
   selector: 'app-product-list',
@@ -14,23 +16,47 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductListComponent implements OnInit {
   products: any[] = [];
+  filteredProducts: any[] = [];
+  category = input.required();
   constructor(
     private catalogService: CatalogService,
-    private notificationService: NotificationService
-  ) {}
+    private notificationService: NotificationService,
+    private router: Router,
+    private loaderService: LoaderService
+  ) {
+    effect(() => {
+      console.log('effect', this.category());
+      this.filteredProducts = this.products.filter((product) => {
+        if (this.category() == 'all' || this.category() == null) {
+          return true;
+        } else {
+          return product.category == this.category();
+        }
+      });
+      console.log('filteredProducts', this.filteredProducts);
+    });
+  }
   ngOnInit(): void {
+    this.loaderService.isLoading.set(true);
     this.catalogService.getProducts().subscribe({
       next: (res) => {
+        this.loaderService.isLoading.set(false);
         this.products = res;
+        this.filteredProducts = this.products;
         console.log(res);
       },
       error: (err) => {
+        this.loaderService.isLoading.set(false);
         this.notificationService.showError(
           'Oops!',
           messageHelper.getErrorMessage(err)
         );
       },
     });
+  }
+
+  productDetails(productId: number) {
+    this.router.navigate(['/home/product-details', productId]);
   }
 
   getSeverity(count: any) {

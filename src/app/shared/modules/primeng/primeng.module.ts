@@ -56,6 +56,8 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { SidebarModule } from 'primeng/sidebar';
 import { TimelineModule } from 'primeng/timeline';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { ImageModule } from 'primeng/image';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [],
@@ -116,6 +118,8 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     SidebarModule,
     TimelineModule,
     PanelMenuModule,
+    ImageModule,
+    TabViewModule,
   ],
   exports: [
     CardModule,
@@ -174,6 +178,8 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     SidebarModule,
     TimelineModule,
     PanelMenuModule,
+    ImageModule,
+    TabViewModule,
   ],
 })
 export class PrimengModule {}

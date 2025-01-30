@@ -1,0 +1,84 @@
+<div class="p-4 flex flex-row column-gap-6">
+  <div>
+    <p-image
+      [src]="productDetails?.image"
+      alt="Image"
+      width="250"
+      [preview]="true"
+    />
+  </div>
+  <div class="py-2">
+    <span class="text-sm text-600">{{ productDetails?.category }}</span>
+    <p class="text-2xl text-primary font-semibold mt-2">
+      {{ productDetails?.title }}
+    </p>
+    <div class="flex flex-row align-items-start gap-4">
+      <div class="surface-100 p-1" style="border-radius: 30px">
+        <div
+          class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2"
+          style="
+            border-radius: 30px;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04),
+              0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+          "
+        >
+          <span class="text-900 font-medium text-sm">{{
+            productDetails?.rating.rate
+          }}</span>
+          <i class="pi pi-star-fill text-yellow-500"></i>
+        </div>
+      </div>
+      <p-tag
+        class="my-auto"
+        icon="pi pi-warehouse"
+        [value]="productDetails?.rating.count + ' left!'"
+        [severity]="getSeverity(productDetails?.rating.count)"
+      />
+    </div>
+    <div class="my-4">
+      <span class="text-3xl font-semibold text-900">{{
+        productDetails?.price | currency
+      }}</span>
+    </div>
+    <div class="flex flex-row gap-4">
+      <p-button
+        [rounded]="true"
+        [text]="true"
+        [raised]="true"
+        [icon]="wish ? 'pi pi-heart-fill' : 'pi pi-heart'"
+        (click)="wishToggle()"
+      />
+      <p-button
+        icon="pi pi-shopping-cart"
+        label="Add to cart"
+        [rounded]="true"
+        [outlined]="true"
+        severity="secondary"
+      />
+    </div>
+    <div class="mt-8">
+      <p-button
+        styleClass="w-full "
+        label="Checkout Now"
+        icon="pi pi-arrow-right"
+        iconPos="right"
+        size="large"
+      />
+    </div>
+  </div>
+</div>
+<div class="card px-2">
+  <p-tabView>
+    <p-tabPanel header="description">
+      <p>
+        {{ productDetails?.description }}
+      </p>
+    </p-tabPanel>
+    <p-tabPanel header="reviews">
+      <p>no reviews yet</p>
+    </p-tabPanel>
+  </p-tabView>
+</div>
+
+<!-- 
+description , title -->

@@ -4,6 +4,7 @@ import { CatalogService } from '../../catalog.service';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { messageHelper } from '../../../../shared/helpers/message.helpers';
 import { ProductListComponent } from '../../components/product-list/product-list.component';
+import { LoaderService } from '../../../../core/services/loader.service';
 
 @Component({
   selector: 'app-catalog',
@@ -14,22 +15,17 @@ import { ProductListComponent } from '../../components/product-list/product-list
 })
 export class CatalogComponent implements OnInit {
   products: any[] = [];
+  selectedCategory: string = 'all';
+
   constructor(
     private catalogService: CatalogService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private loaderService: LoaderService
   ) {}
 
-  ngOnInit(): void {
-    this.catalogService.getProducts().subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (err) => {
-        this.notificationService.showError(
-          'Oops!',
-          messageHelper.getErrorMessage(err)
-        );
-      },
-    });
+  ngOnInit(): void {}
+
+  categorySelected(category: any): void {
+    this.selectedCategory = category;
   }
 }

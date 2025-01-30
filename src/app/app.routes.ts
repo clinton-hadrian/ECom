@@ -7,6 +7,7 @@ import { tokenGuard } from './core/guards/token.guard';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { authRoutes } from './features/auth/auth.routes';
 import { catalogRoutes } from './features/catalog/catalog.routes';
+import { productDetailRoutes } from './features/product-details/product-details.routes';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,7 @@ export const routes: Routes = [
     children: [
       ...homeRoutes,
       ...catalogRoutes,
+      ...productDetailRoutes,
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

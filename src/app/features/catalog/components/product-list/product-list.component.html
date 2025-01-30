@@ -1,5 +1,5 @@
 <div class="card">
-  <p-dataView #dv [value]="products">
+  <p-dataView #dv [value]="filteredProducts">
     <ng-template pTemplate="list" let-products>
       <div class="grid grid-nogutter">
         <div
@@ -13,12 +13,13 @@
           >
             <div class="md:w-10rem relative">
               <img
-                class="block xl:block mx-auto border-round w-full"
+                class="block xl:block mx-auto border-round w-full cursor-pointer"
                 [src]="item.image"
                 [alt]="item.name"
+                (click)="productDetails(item.id)"
               />
               <p-tag
-                [value]="item.inventoryStatus"
+                [value]="item.rating.count + ' left!'"
                 [severity]="getSeverity(item.rating.count)"
                 class="absolute"
                 [style.left.px]="4"
@@ -35,7 +36,10 @@
                   <span class="font-medium text-secondary text-sm">{{
                     item.category
                   }}</span>
-                  <div class="text-lg font-medium text-900 mt-2">
+                  <div
+                    (click)="productDetails(item.id)"
+                    class="text-lg font-medium text-900 mt-2 cursor-pointer"
+                  >
                     {{ item.title }}
                   </div>
                 </div>
