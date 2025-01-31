@@ -16,16 +16,20 @@ import { LoaderService } from '../../../../core/services/loader.service';
 export class CatalogComponent implements OnInit {
   products: any[] = [];
   selectedCategory: string = 'all';
+  searchValue!: string;
 
   constructor(
     private catalogService: CatalogService,
     private notificationService: NotificationService,
     private loaderService: LoaderService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   categorySelected(category: any): void {
     this.selectedCategory = category;
+  }
+  onSearch(value: any): void {
+    this.searchValue = value;
   }
 }

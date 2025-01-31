@@ -10,7 +10,12 @@
   <div class="p-toolbar-group-center">
     <span class="p-input-icon-left">
       <i class="pi pi-search"></i>
-      <input pInputText placeholder="Search Products" />
+      <input
+        pInputText
+        [(ngModel)]="productSearchValue"
+        (ngModelChange)="emitSeachValue()"
+        placeholder="Search Products"
+      />
     </span>
   </div>
   <div class="p-toolbar-group-end">

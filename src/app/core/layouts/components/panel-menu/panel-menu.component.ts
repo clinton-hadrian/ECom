@@ -18,7 +18,7 @@ export class PanelMenuComponent implements OnInit {
     private notificationService: NotificationService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.items = [
@@ -44,7 +44,7 @@ export class PanelMenuComponent implements OnInit {
             label: 'Cart',
             icon: 'pi pi-shopping-cart',
             command: () => {
-              this.router.navigate(['/home/catalog']);
+              this.router.navigate(['/home/cart']);
             },
           },
         ],

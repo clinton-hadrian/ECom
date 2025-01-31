@@ -18,13 +18,15 @@ export class ToolbarComponent implements OnInit {
   items!: any[];
   selectedCategory!: any;
   categories!: any[];
+  productSearchValue!: any;
 
   onCategorySelect = output<string>();
+  onProductSearch = output<string>();
   constructor(
     private catalogService: CatalogService,
     private notificationService: NotificationService,
     private loaderService: LoaderService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loaderService.isLoading.set(true);
@@ -55,5 +57,9 @@ export class ToolbarComponent implements OnInit {
 
   emitCategory() {
     this.onCategorySelect.emit(this.selectedCategory);
+  }
+
+  emitSeachValue() {
+    this.onProductSearch.emit(this.productSearchValue);
   }
 }

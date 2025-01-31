@@ -1,5 +1,10 @@
 <div class="card">
   <p-dataView #dv [value]="filteredProducts">
+    <!-- <ng-template pTemplate="header">
+      <div class="flex justify-content-end">
+        <p-dataViewLayoutOptions />
+      </div>
+    </ng-template> -->
     <ng-template pTemplate="list" let-products>
       <div class="grid grid-nogutter">
         <div
@@ -64,7 +69,12 @@
                   "$" + item.price
                 }}</span>
                 <div class="flex flex-row-reverse md:flex-row gap-2">
-                  <p-button icon="pi pi-heart" [outlined]="true" />
+                  <p-button
+                    pTooltip="Add to cart"
+                    tooltipPosition="bottom"
+                    icon="pi pi-shopping-cart"
+                    [outlined]="true"
+                  />
                   <p-button
                     icon="pi pi-shopping-cart"
                     class="flex-auto md:flex-initial white-space-nowrap"

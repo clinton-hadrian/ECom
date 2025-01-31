@@ -17,7 +17,9 @@ import { LoaderService } from '../../../../core/services/loader.service';
 export class ProductListComponent implements OnInit {
   products: any[] = [];
   filteredProducts: any[] = [];
+  // layout: any = 'list' ;
   category = input.required();
+  proSearchValue = input.required<string>();
   constructor(
     private catalogService: CatalogService,
     private notificationService: NotificationService,
@@ -26,12 +28,12 @@ export class ProductListComponent implements OnInit {
   ) {
     effect(() => {
       console.log('effect', this.category());
+      console.log('search value', this.proSearchValue());
       this.filteredProducts = this.products.filter((product) => {
-        if (this.category() == 'all' || this.category() == null) {
-          return true;
-        } else {
-          return product.category == this.category();
-        }
+        const matchesCategory = this.category() === 'all' || this.category() === null || product.category === this.category();
+        const matchesSearch = !this.proSearchValue() || product.title.toLowerCase().includes(this.proSearchValue().toLowerCase());
+
+        return matchesCategory && matchesSearch;
       });
       console.log('filteredProducts', this.filteredProducts);
     });

@@ -8,6 +8,7 @@ import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.comp
 import { authRoutes } from './features/auth/auth.routes';
 import { catalogRoutes } from './features/catalog/catalog.routes';
 import { productDetailRoutes } from './features/product-details/product-details.routes';
+import { cartRoutes } from './features/cart/cart.routes';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,7 @@ export const routes: Routes = [
       ...homeRoutes,
       ...catalogRoutes,
       ...productDetailRoutes,
+      ...cartRoutes,
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
