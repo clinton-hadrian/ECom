@@ -18,7 +18,7 @@ export class PanelMenuComponent implements OnInit {
     private notificationService: NotificationService,
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.items = [
@@ -68,14 +68,9 @@ export class PanelMenuComponent implements OnInit {
           {
             label: 'About',
             icon: 'pi pi-question',
-            // command: () => {
-            //   this.messageService.add({
-            //     severity: 'info',
-            //     summary: 'Shared',
-            //     detail: 'Exported to cloud',
-            //     life: 3000,
-            //   });
-            // },
+            command: () => {
+              this.router.navigate(['/home/about']);
+            },
           },
         ],
       },

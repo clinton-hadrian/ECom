@@ -15,4 +15,6 @@ export class ProductDetailsService {
   getProductById(productId: number) {
     return this.http.get<any>(`${this.baseUrl}products/${productId}`);
   }
+
+
 }

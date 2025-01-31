@@ -9,6 +9,7 @@ import { authRoutes } from './features/auth/auth.routes';
 import { catalogRoutes } from './features/catalog/catalog.routes';
 import { productDetailRoutes } from './features/product-details/product-details.routes';
 import { cartRoutes } from './features/cart/cart.routes';
+import { AboutComponent } from './shared/components/about/about.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,7 @@ export const routes: Routes = [
       ...catalogRoutes,
       ...productDetailRoutes,
       ...cartRoutes,
+      { path: 'about', component: AboutComponent, title: 'About' },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

@@ -6,6 +6,7 @@ import { messageHelper } from '../../../../shared/helpers/message.helpers';
 import { PrimengModule } from '../../../../shared/modules/primeng/primeng.module';
 import { CommonModule } from '@angular/common';
 import { LoaderService } from '../../../../core/services/loader.service';
+import { CartService } from '../../../cart/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -21,7 +22,8 @@ export class ProductDetailsComponent implements OnInit {
     private productDetailsService: ProductDetailsService,
     private route: ActivatedRoute,
     private notificationService: NotificationService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private cartService: CartService
   ) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -44,6 +46,15 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+    this.notificationService.showSuccess('Success', 'Product added to cart');
+  }
+
+  wishToggle() {
+    this.wish = !this.wish;
+  }
+
   getSeverity(count: any) {
     switch (count) {
       case count > 100:
@@ -58,9 +69,5 @@ export class ProductDetailsComponent implements OnInit {
       default:
         return undefined;
     }
-  }
-
-  wishToggle() {
-    this.wish = !this.wish;
   }
 }

@@ -6,6 +6,7 @@ import { PrimengModule } from '../../../../shared/modules/primeng/primeng.module
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../../../core/services/loader.service';
+import { CartService } from '../../../cart/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -24,14 +25,22 @@ export class ProductListComponent implements OnInit {
     private catalogService: CatalogService,
     private notificationService: NotificationService,
     private router: Router,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private cartService: CartService
   ) {
     effect(() => {
       console.log('effect', this.category());
       console.log('search value', this.proSearchValue());
       this.filteredProducts = this.products.filter((product) => {
-        const matchesCategory = this.category() === 'all' || this.category() === null || product.category === this.category();
-        const matchesSearch = !this.proSearchValue() || product.title.toLowerCase().includes(this.proSearchValue().toLowerCase());
+        const matchesCategory =
+          this.category() === 'all' ||
+          this.category() === null ||
+          product.category === this.category();
+        const matchesSearch =
+          !this.proSearchValue() ||
+          product.title
+            .toLowerCase()
+            .includes(this.proSearchValue().toLowerCase());
 
         return matchesCategory && matchesSearch;
       });
@@ -59,6 +68,11 @@ export class ProductListComponent implements OnInit {
 
   productDetails(productId: number) {
     this.router.navigate(['/home/product-details', productId]);
+  }
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+    this.notificationService.showSuccess('Success', 'Product added to cart');
   }
 
   getSeverity(count: any) {

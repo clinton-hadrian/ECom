@@ -117,7 +117,8 @@
           class="pi pi-shopping-cart mr-4 p-text-secondary cursor-pointer"
           pBadge
           style="font-size: 2rem"
-          value="2"
+          [value]="cartService.cartItems().length"
+          (click)="goToCart()"
         ></i>
         <p-avatar
           image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"

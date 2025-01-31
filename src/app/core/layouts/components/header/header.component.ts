@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimengModule } from '../../../../shared/modules/primeng/primeng.module';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../../../features/cart/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +13,9 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   items!: any[];
+
+  constructor(public cartService: CartService, public router: Router) {}
+
   ngOnInit() {
     // this.items = [
     //   {
@@ -67,5 +72,9 @@ export class HeaderComponent implements OnInit {
     //     badge: '3',
     //   },
     // ];
+  }
+
+  goToCart() {
+    this.router.navigate(['home/cart']);
   }
 }
