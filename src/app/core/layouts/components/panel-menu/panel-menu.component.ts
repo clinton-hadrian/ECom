@@ -27,24 +27,45 @@ export class PanelMenuComponent implements OnInit {
         icon: 'pi pi-compass',
         items: [
           {
-            label: 'Home',
-            icon: 'pi pi-home',
+            label: 'Enquiry Received',
+            icon: 'pi pi-search',
             command: () => {
-              this.router.navigate(['/home']);
+              //this.router.navigate(['/enquiry-received']);
             },
           },
           {
-            label: 'Products',
+            label: 'Send Link',
+            icon: 'pi pi-link',
+            command: () => {
+              //this.router.navigate(['/send-link']);
+            },
+          },
+          {
+            label: 'List Of RIF\'s',
             icon: 'pi pi-list',
             command: () => {
-              this.router.navigate(['/home/catalog']);
+              //this.router.navigate(['/list-of-rifs']);
             },
           },
           {
-            label: 'Cart',
-            icon: 'pi pi-shopping-cart',
+            label: 'Report',
+            icon: 'pi pi-file',
             command: () => {
-              this.router.navigate(['/home/cart']);
+              //this.router.navigate(['/report']);
+            },
+          },
+          {
+            label: 'Payment Check',
+            icon: 'pi pi-verified',
+            command: () => {
+              //this.router.navigate(['/payment-check']);
+            },
+          },
+          {
+            label: 'Bank Account',
+            icon: 'pi pi-building-columns',
+            command: () => {
+              //this.router.navigate(['/bank-account']);
             },
           },
         ],
@@ -80,7 +101,7 @@ export class PanelMenuComponent implements OnInit {
         command: () => {
           this.authService.logout();
         },
-      },
+      },      
     ];
   }
 }
