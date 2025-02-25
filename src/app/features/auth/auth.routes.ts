@@ -7,7 +7,7 @@ export const authRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    title: 'Login',
+    title: 'Spark - Login',
   },
   {
     path: 'register',
