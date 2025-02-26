@@ -12,7 +12,7 @@ import { TermsConditionComponent } from '../../../../shared/components/terms-con
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  headerMessage= "Terms And Condition "
+  headerMessage= "Terms And Conditions"
   constructor(private router: Router) {}
 
   signIn() {

@@ -1,0 +1,70 @@
+<div
+  class="flex justify-content-center align-content-center h-full w-full my-auto"
+>
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+    <div class="text-center mb-5">
+        <div class="flex align-items-center justify-content-center">
+            <img
+                src="../../../../../assets/images/Cameologo.png"
+                alt="Image"
+                height="100"
+                class="mb-3"
+            />
+            <img
+                src="../../../../../assets/images/SparkLogo1.png"
+                alt="Image"
+                height="100"
+                class="mb-3"
+            />            
+        </div>
+      
+        <div class="text-900 text-3xl font-medium mb-3">Login Form</div>      
+    </div>
+
+    <div>      
+      <label for="mobile1" class="block text-900 font-medium mb-2">Mobile*</label>
+      <input
+        id="mobile1"
+        type="tel"
+        placeholder="Enter the Mobile Number"
+        pInputText
+        class="w-full mb-3"
+        pattern="[0-9]{10}"
+        minlength="10" 
+        maxlength="10"
+        required
+      />  
+      
+      <label for="password1" class="block text-900 font-medium mb-2">Password*</label>
+      <input
+        id="password1"
+        type="password"
+        placeholder="Enter the Password"
+        pInputText
+        class="w-full mb-3"
+        required
+      />
+
+      <label for="captcha1" class="block text-900 font-medium mb-2">Captcha*</label>
+      <input
+        id="captcha1"
+        type="text"
+        placeholder="Enter the Captcha"
+        pInputText
+        class="w-full mb-3"
+        required
+      />
+
+      <button
+        pButton
+        pRipple
+        label="Login"
+        icon="pi pi-sign-in"
+        class="w-full"
+        (click)="signIn()"
+      ></button>
+    </div>
+  </div>
+</div>
+
+

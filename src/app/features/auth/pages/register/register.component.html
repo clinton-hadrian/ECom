@@ -3,40 +3,65 @@
 >
   <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
     <div class="text-center mb-5">
-      <img
-        src="../../../../../assets/images/SparkLogo1.png"
-        alt="Image"
-        height="50"
-        class="mb-3"
-      />
-      <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
-      <span class="text-600 font-medium line-height-3"
-        >Don't have an account?</span
-      >
-      <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
-        >Create today!</a
-      >
+      <div class="flex align-items-center justify-content-center">
+        <img
+            src="../../../../../assets/images/Cameologo.png"
+            alt="Image"
+            height="100"
+            class="mb-3"
+        />
+        <img
+            src="../../../../../assets/images/SparkLogo1.png"
+            alt="Image"
+            height="100"
+            class="mb-3"
+        />            
+    </div>
+      <div class="text-900 text-3xl font-medium mb-3">Registration Form</div>      
     </div>
 
     <div>
-      <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+      <label for="name1" class="block text-900 font-medium mb-2">Name*</label>
       <input
-        id="email1"
+        id="name1"
         type="text"
-        placeholder="Email address"
+        placeholder="Enter the Name"
         pInputText
         class="w-full mb-3"
+        required
       />
 
-      <label for="password1" class="block text-900 font-medium mb-2"
-        >Password</label
-      >
+      <label for="companyName1" class="block text-900 font-medium mb-2">Company Name*</label>
       <input
-        id="password1"
-        type="password"
-        placeholder="Password"
+        id="companyName1"
+        type="text"
+        placeholder="Enter the Company Name"
         pInputText
         class="w-full mb-3"
+        required
+      />
+
+      <label for="email1" class="block text-900 font-medium mb-2">Email*</label>
+      <input
+        id="email1"
+        type="email"
+        placeholder="Enter the Email address"
+        pInputText
+        class="w-full mb-3"
+        required
+      />
+
+      <label for="mobile1" class="block text-900 font-medium mb-2">Mobile*</label>
+      <input
+        id="mobile1"
+        type="tel"
+        placeholder="Enter the Mobile Number"
+        pInputText
+        class="w-full mb-3"
+        pattern="[0-9]{10}"
+        minlength="10" 
+        maxlength="10"
+        required
       />
 
       <div class="flex align-items-center justify-content-between mb-6">
@@ -46,19 +71,15 @@
             [binary]="true"
             styleClass="mr-2"
           ></p-checkbox>
-          <label for="rememberme1" class="text-900">Remember me</label>
-        </div>
-        <a
-          class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
-          >Forgot password?</a
-        >
+          <label for="rememberme1" class="text-900">Terms & Conditions</label>
+        </div>        
       </div>
 
       <button
         pButton
         pRipple
-        label="Sign In"
-        icon="pi pi-user"
+        label="Generate OTP"
+        icon="pi pi-key"
         class="w-full"
         (click)="register()"
       ></button>
