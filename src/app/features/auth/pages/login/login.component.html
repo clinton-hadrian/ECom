@@ -1,73 +1,194 @@
 <div
-  class="flex justify-content-center align-content-center h-full w-full my-auto"
+  class="flex flex-column align-items-center p-4 justify-content-center w-auto h-auto row-gap-2"
 >
-  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
-    <div class="text-center mb-5">
-      <div class="flex align-items-center justify-content-center">
-        <img
-            src="../../../../../assets/images/Cameologo.png"
-            alt="Image"
-            height="100"
-            class="mb-3"
-        />
-        <img
+  <div
+    class="flex justify-content-center align-content-center h-full w-full my-auto"
+  >
+    <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+      <div class="text-center mb-2">
+        <div class="flex align-items-center justify-content-center">
+          <img
             src="../../../../../assets/images/SparkLogo1.png"
             alt="Image"
-            height="100"
-            class="mb-3"
-        />            
-    </div>
-      <div class="text-900 text-3xl font-medium mb-3">Login</div>      
-    </div>
+            width="170"
+            height="70"
+            class="my-auto"
+          />
+        </div>
 
-    <div>
-      <label for="email1" class="block text-900 font-medium mb-2">Email*</label>
-      <input
-        id="email1"
-        type="email"
-        placeholder="Email address"
-        pInputText
-        class="w-full mb-3"
-        required
-      />
-
-      <label for="mobile1" class="block text-900 font-medium mb-2">Mobile*</label>
-      <input
-        id="mobile1"
-        type="tel"
-        placeholder="Mobile Number"
-        pInputText
-        class="w-full mb-3"
-        pattern="[0-9]{10}"
-        minlength="10" 
-        maxlength="10"
-        required
-      />
-
-      <div class="flex align-items-center justify-content-between mb-6">
-        <div class="flex align-items-center">
-          <p-checkbox
-            id="rememberme1"
-            [binary]="true"
-            styleClass="mr-2"
-          ></p-checkbox>
-          <label for="rememberme1" class="text-900">Terms & Conditions</label>
-        </div>        
+        <div class="text-900 text-3xl font-medium mb-3">
+          {{ loginStage == 1 ? "Login" : "Verify your phone number" }}
+        </div>
+        <span class="text-600 font-medium line-height-3">
+          {{
+            loginStage == 1
+              ? "Don't have an account?"
+              : "Enter your OTP code here!"
+          }}</span
+        ><a
+          class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
+          >{{ loginStage == 1 ? "Create today!" : "Resend otp?" }}</a
+        >
       </div>
+      @switch(loginStage){ @case(1){
+      <div>
+        <form [formGroup]="loginForm" (keydown.enter)="submitLoginForm()">
+          <div class="field mb-3">
+            <label for="email" class="block text-900 font-medium mb-2"
+              >Email</label
+            >
 
+            <input
+              id="email"
+              type="email"
+              placeholder="Email address"
+              pInputText
+              class="w-full"
+              required
+              [ngClass]="{
+                'ng-invalid ng-dirty':
+                  isValid(loginForm, 'email') ||
+                  hasTrailingSpace(loginForm, 'email') ||
+                  strictEmail(loginForm, 'email')
+              }"
+              formControlName="email"
+            />
+            <small
+              *ngIf="
+                isValid(loginForm, 'email') ||
+                hasTrailingSpace(loginForm, 'email')
+              "
+              class="text-red-500"
+              id="email-hint"
+            >
+              Enter your e-mail.
+            </small>
+            <small
+              *ngIf="strictEmail(loginForm, 'email')"
+              class="text-red-500"
+              id="email-hint"
+            >
+              Enter valid E-mail.
+            </small>
+          </div>
+
+          <div class="field mb-3">
+            <label for="mobile" class="block text-900 font-medium mb-2"
+              >Mobile</label
+            >
+            <input
+              id="mobile"
+              type="tel"
+              placeholder="Mobile Number"
+              pInputText
+              class="w-full"
+              pattern="[0-9]{10}"
+              minlength="10"
+              maxlength="10"
+              required
+              appOnlyNumber
+              [ngClass]="{
+                'ng-invalid ng-dirty':
+                  isValid(loginForm, 'mobile') ||
+                  hasTrailingSpace(loginForm, 'mobile')
+              }"
+              formControlName="mobile"
+            />
+            <small
+              *ngIf="
+                isValid(loginForm, 'mobile') ||
+                hasTrailingSpace(loginForm, 'mobile')
+              "
+              class="text-red-500"
+            >
+              Enter your mobile number.
+            </small>
+            <small
+              *ngIf="invalidMobileNumber(loginForm, 'mobile')"
+              class="text-red-500"
+            >
+              Enter your valid mobile number.
+            </small>
+          </div>
+
+          <div class="flex align-items-center justify-content-between mb-6">
+            <div class="flex align-items-center">
+              <p-checkbox
+                id="rememberme"
+                [binary]="true"
+                styleClass="mr-2"
+              ></p-checkbox>
+              <label for="rememberme" class="text-900"
+                >Terms & Conditions</label
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+      } @case(2){
+      <div
+        class="flex flex-column align-items-center p-4 justify-content-center row-gap-3"
+      >
+        <p-inputOtp
+          aria-describedby="otp-hint"
+          [integerOnly]="true"
+          class="ng-invalid ng-dirty"
+        />
+        <app-timer />
+      </div>
+      } @case(3){
+      <div
+        class="flex flex-column align-items-center p-4 justify-content-center row-gap-3"
+      >
+        <div class="font-medium text-lg mb-3">
+          Thank you for your enquiry for payment of stamp duty. We will get in
+          touch with you shortly
+        </div>
+        <div class="flex font-bold text-500 mb-3 justify-content-end w-full">
+          <div class="flex">- Team Cameo</div>
+        </div>
+      </div>
+      }}
       <button
         pButton
         pRipple
-        label="Generate OTP"
-        icon="pi pi-key"
+        [label]="loginStage == 1 ? 'Generate OTP' : 'Verify OTP'"
+        [icon]="loginStage == 1 ? 'pi pi-key' : 'pi pi-search'"
         class="w-full"
-        (click)="signIn()"
+        (click)="onSubmit()"
       ></button>
+    </div>
+  </div>
+  <div
+    class="flex justify-content-center align-items-center border-top-3 border-purple-300 border-round-md border-noround-top bg-white w-full lg:w-6"
+    [style]="{ color: 'black' }"
+  >
+    <div
+      class="flex-grow-1 flex justify-content-center align-items-center mx-2 w-7 text-lg"
+    >
+      <span style="display: inline-block; width: 100%"
+        >Powered by
+        <span style="display: inline-block; width: 100%">
+          <p-button [link]="cameoLink"
+            ><span class="font-semibold text-xl"
+              >Cameo Corporate Services Limited</span
+            ></p-button
+          >
+        </span></span
+      >
+    </div>
+    <div
+      class="flex-none border-left-2 border-primary-500 w-3 flex justify-content-center align-items-center pt-0 border-round-3xl align-self-end"
+    >
+      <img
+        alt="Card"
+        style="max-height: 100px; max-width: 100px; scale: 0.5"
+        src="../../../../../assets/images/camLogo.jpg"
+      />
     </div>
   </div>
 </div>
 
-<app-display-dialog  [header]="headerMessage">
-  <app-terms-condition   />
+<app-display-dialog [header]="headerMessage">
+  <app-terms-condition />
 </app-display-dialog>
-

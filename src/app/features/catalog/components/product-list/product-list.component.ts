@@ -1,6 +1,6 @@
 import { Component, effect, input, OnInit } from '@angular/core';
 import { NotificationService } from '../../../../core/services/notification.service';
-import { messageHelper } from '../../../../shared/helpers/message.helpers';
+import { messageHelper } from '../../../../shared/helpers/message.helper';
 import { CatalogService } from '../../catalog.service';
 import { PrimengModule } from '../../../../shared/modules/primeng/primeng.module';
 import { CommonModule } from '@angular/common';

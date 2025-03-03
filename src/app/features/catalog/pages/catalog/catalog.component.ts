@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { CatalogService } from '../../catalog.service';
 import { NotificationService } from '../../../../core/services/notification.service';
-import { messageHelper } from '../../../../shared/helpers/message.helpers';
+import { messageHelper } from '../../../../shared/helpers/message.helper';
 import { ProductListComponent } from '../../components/product-list/product-list.component';
 import { LoaderService } from '../../../../core/services/loader.service';
 
@@ -22,9 +22,9 @@ export class CatalogComponent implements OnInit {
     private catalogService: CatalogService,
     private notificationService: NotificationService,
     private loaderService: LoaderService
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   categorySelected(category: any): void {
     this.selectedCategory = category;

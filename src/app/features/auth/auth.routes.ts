@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { UserComponent } from './pages/login/user/user.component';
+import { UserLoginComponent } from './pages/user-login/user-login.component';
 
 export const authRoutes: Routes = [
   {
@@ -13,16 +13,16 @@ export const authRoutes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-    title: 'Login',
+    title: 'Spark - Register',
   },
   {
     path: 'resetPassword',
     component: ForgotPasswordComponent,
-    title: 'Password reset',
+    title: 'Spark - Reset Password',
   },
   {
-    path: 'login/user',
-    component: UserComponent,
-    title: 'User',
+    path: 'userLogin',
+    component: UserLoginComponent,
+    title: 'Spark - User Login',
   },
 ];

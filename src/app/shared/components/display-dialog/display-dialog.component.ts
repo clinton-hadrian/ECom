@@ -5,14 +5,14 @@ import { PrimengModule } from '../../modules/primeng/primeng.module';
   selector: 'app-display-dialog',
   standalone: true,
   imports: [PrimengModule],
-  templateUrl: './display-dialog.component.html', 
-  styleUrl: './display-dialog.component.scss'
+  templateUrl: './display-dialog.component.html',
+  styleUrl: './display-dialog.component.scss',
 })
 export class DisplayDialogComponent {
-  visible: boolean = true;
+  visible: boolean = false;
   header = input.required<string>();
 
   showDialog() {
-      this.visible = true;
+    this.visible = true;
   }
 }

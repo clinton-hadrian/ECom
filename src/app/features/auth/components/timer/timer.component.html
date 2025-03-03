@@ -1,0 +1,7 @@
+<div>
+  <p-tag
+    icon="pi pi-clock"
+    [severity]="getSeverity(minutes)"
+    [value]="minutes + ':' + (seconds < 10 ? '0' + seconds : seconds)"
+  />
+</div>

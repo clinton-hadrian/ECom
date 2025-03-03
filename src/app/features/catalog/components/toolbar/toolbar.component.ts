@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CatalogComponent } from '../../pages/catalog/catalog.component';
 import { CatalogService } from '../../catalog.service';
 import { NotificationService } from '../../../../core/services/notification.service';
-import { messageHelper } from '../../../../shared/helpers/message.helpers';
+import { messageHelper } from '../../../../shared/helpers/message.helper';
 import { LoaderService } from '../../../../core/services/loader.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class ToolbarComponent implements OnInit {
     private catalogService: CatalogService,
     private notificationService: NotificationService,
     private loaderService: LoaderService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.loaderService.isLoading.set(true);

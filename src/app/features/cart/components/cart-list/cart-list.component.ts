@@ -3,7 +3,7 @@ import { Component, effect, input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../../../core/services/loader.service';
 import { NotificationService } from '../../../../core/services/notification.service';
-import { messageHelper } from '../../../../shared/helpers/message.helpers';
+import { messageHelper } from '../../../../shared/helpers/message.helper';
 import { PrimengModule } from '../../../../shared/modules/primeng/primeng.module';
 import { CatalogService } from '../../../catalog/catalog.service';
 import { CartService } from '../../cart.service';
@@ -71,12 +71,12 @@ export class CartListComponent implements OnInit {
   }
 
   productDetails(productId: number) {
-    // this.router.navigate(['/home/product-details', productId]);
+    this.router.navigate(['/home/product-details', productId]);
   }
 
   addToCart(product: any) {
-    // this.cartService.addToCart(product);
-    // this.notificationService.showSuccess('Success', 'Product added to cart');
+    //  this.cartService.addToCart(product);
+    //  this.notificationService.showSuccess('Success', 'Product added to cart');
   }
 
   getSeverity(count: any) {

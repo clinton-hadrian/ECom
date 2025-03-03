@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductDetailsService } from '../../product-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../../../core/services/notification.service';
-import { messageHelper } from '../../../../shared/helpers/message.helpers';
+import { messageHelper } from '../../../../shared/helpers/message.helper';
 import { PrimengModule } from '../../../../shared/modules/primeng/primeng.module';
 import { CommonModule } from '@angular/common';
 import { LoaderService } from '../../../../core/services/loader.service';
