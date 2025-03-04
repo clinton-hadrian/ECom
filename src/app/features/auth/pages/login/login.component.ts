@@ -18,6 +18,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { TimerComponent } from '../../components/timer/timer.component';
 import { DirectiveModule } from '../../../../shared/modules/directive/directive.module';
+import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
 
 @Component({
   selector: 'ecom-login',
@@ -30,6 +31,7 @@ import { DirectiveModule } from '../../../../shared/modules/directive/directive.
     FormsModule,
     ReactiveFormsModule,
     DirectiveModule,
+    AuthFooterComponent
   ],
   standalone: true,
   templateUrl: './login.component.html',

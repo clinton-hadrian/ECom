@@ -11,4 +11,7 @@ export class AuthService {
     sessionStorage.clear();
     this.router.navigate(['/']);
   }
+
+  
+
 }
